@@ -3,11 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Biscuit Clicker </title>
+        <title> Adrian Paul Limpiado Balunan </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="https://use.typekit.net/ecv0hnp.css"><!-- Font -->
-        <link rel="stylesheet" href="animation.css"><!-- Font -->
+        <link rel="stylesheet" href="styles/animation.css"><!-- Font -->
+        <link rel="stylesheet" href="styles/helper.css"><!-- Font -->
+        <link rel="stylesheet" href="styles/index.css"><!-- Font -->
+
         <!-- Font Awesome -->
         <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -18,17 +21,19 @@
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         rel="stylesheet"
         />
-        <!-- MDB -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
     <body class="d-flex flex-column h-100" onload="startTime()">
         <div class="scrollbar-indicator w-100 position-fixed" style="height: 1%; top: 0px;">
             <div class="scrollbar h-100 text-start" style="width: 0%; background-color: beige;"></div>
-            <p id="alsoclock" class="w-100 text-end p-2"></p>
+            <p class="w-100 text-end p-2"><span id="alsoclock"></span><i class="fa-solid fa-alarm-clock"></i></p>
         </div>
         <!-- Landing Site 
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.76/build/spline-viewer.js"></script>
         <spline-viewer url="https://prod.spline.design/sl4gxNNL6fCMFdNG/scene.splinecode"></spline-viewer> -->
-        <section class="spline container-fluid my-0 py-0 position-relative overflow-hidden w-100 min-vh-100 mx-auto">
+        <section id="hero" class="spline container-fluid my-0 mb-2 py-0 position-relative overflow-hidden w-100 min-vh-100 mx-auto">
             <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.77/build/spline-viewer.js" async></script>
             <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/sl4gxNNL6fCMFdNG/scene.splinecode"><img src="data:image/png;base64,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" alt="Spline preview" style="width: 100%; height: 100%;"/></spline-viewer>
             <div class="position-relative z-2 h-100 d-flex flex-column justify-content-center align-items-center text-center p-2 ">
@@ -36,49 +41,42 @@
                 <p class="fs-3" id="author"></p>
             </div>
             <div id="mjaau" class="d-none d-md-block"></div>
+            <div class="triangle-down"></div>
         </section>
 
         <!-- Projects -->
-        <section class="container-fluid w-100 min-vh-100 d-flex flex-column justify-content-center align-items-center text-center" style="padding: 4rem 2rem;">
-            <div class="px-3 vh-100 d-flex flex-column justify-content-center align-items-center">
-                <h1> Tidligere arbeid</h1>
-                <div id="carouselExampleCaptions" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="images\robotSto2.jpg" class="d-block w-100 black-cover" alt="..."><!-- 771 x 460-->
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+        <section id="projects" class="container-fluid my-3 w-100 min-vh-100 d-flex flex-column justify-content-center align-items-center text-center" style="padding: 4rem 2rem;">
+            <div class="px-3 min-vh-100 d-flex flex-column justify-content-center align-items-center">
+                <h1 class="my-4" style="font-weight: 900; font-size: 5.5rem !important;"> Tidligere arbeid</h1>
+                <div id="carouselExampleCaptions" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="infopages/legoInfo.html" target="_blank"><img src="images\robotSto-Bg.jpg" class="d-block w-100 carousel-img" alt="..."></a><!-- 771 x 460-->
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="text-black rounded py-2">Lego Mindstorm Project</h5>
+                                <p class="text-black rounded py-2">Programmert lego robot som kan få til forskjellige ting</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="infopages/javaInfo.html" target="_blank"><img src="images/java-Bg.jpg" class="d-block w-100 carousel-img" alt="..."></a>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="text-white rounded py-2">JAVA - Oppgaver</h5>
+                                <p class="text-white rounded py-2">Oppgaver og prosjekter innen Programmering 1 Faget i Trondheim</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -86,14 +84,38 @@
         <!-- CV -->
         <section class="container-fluid w-100 min-vh-100 d-flex flex-column justify-content-center align-items-center text-center" style="padding: 4rem 2rem;">
             <div class="px-3 vh-100 d-flex flex-column justify-content-center align-items-center">
-                <h1> MHmmmmmmm </h1>
-                <p> Typeshiiiiiiiiiiii</p>
+                <h1> Enjoying yourself? </h1>
+                <p> Take a breather now</p>
             </div>
         </section>
 
         <!-- Contact Informasjon-->
-        <footer class="container-fluid w-100 min-vh-100 p-3 mx-auto bg-primary">
-
+        <footer class="container-fluid w-100 min-vh-100 p-3 mx-auto bg-primary justify-content-center">
+            <h2 class="text-center fs-1 mb-5" style="font-weight: 900; font-size: 5.5rem !important;"> ABOUT ME</h2>
+            <div class="row mt-5"> 
+                <div class="col-12 col-sm-4 mx-2 d-flex flex-column justify-content-center align-items-center"><!-- Links and Profile-->
+                    <img src="images/profile.jpg" class="rounded-circle shadow-lg img-fluid mb-3" alt="Profile Photo" style="width: 250px; height: 250px; object-fit: cover;">
+                    <h3 class="fw-bold mt-3 fs-1"> Adrian Paul Limpiado Balunan</h3>
+                    <p class="fs-3"> DataIngeniør Student | Problem-solver | Utvikler </p>
+                    <div class="mt-3 bg-white rounded p-2">
+                        <a href="https://www.linkedin.com/in/adrian-paul-l-balunan/" class="text-primary mx-2"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+                        <a href="https://github.com/HeyItsAp" class="text-dark mx-2"><i class="fa-brands fa-github fa-2x"></i></a>
+                        <a href="https://discord.com/users/439273466450018314" class="text-primary mx-2"><i class="fa-brands fa-discord fa-2x"></i></a>
+                        <a href="https://open.spotify.com/user/314mitdunx65og5v33hk7c64uj5e" class="text-primary mx-2"><i class="fa-brands fa-spotify fa-2x"></i></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-7 mx-2 mt-5"><!-- Descriptions-->
+                    <h3 class="mt-3 fs-2">Hei, Kumusta, Ni hao og Hallo!</h3>
+                    <p class="fs-2">Jeg heter Adrian Paul Limpiado Balunan, opprinnelig fra Filippinene, født i 2006 og er en engasjert <span class="fw-bold fst-italic">Dataingeniør student </span> i Trondheim som leter etter gode arbeidsmuligheter. 
+                        Akkurat nå har jeg over <span class="fw-bold fst-italic"> 3+ år arbeidserfaring </span> i arbeid i McDonalds, <span class="fw-bold fst-italic"> erfaringer i html, php, javascript, java, css, php, MySQL, bootstrap/tailwind, apache og datamaskinartikektur </span> og mange annet! 
+                        Mine personlige hobbier  inkluderer <span class="fw-bold fst-italic"> trening, reise, musikk og spesielt gaming</span>.
+                        Knytt gjerne kontakt igjennom mine sosiale lenker så kan vi bedre godt kjent med hverandre!
+                    </p>
+                    <blockquote class="text-start fs-2 mt-5 fst-italic">
+                        "Trust - Adrian"
+                    </blockquote>   
+                </div>
+            </div>
         </footer>
                           
         

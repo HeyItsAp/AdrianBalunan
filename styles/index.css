@@ -1,0 +1,78 @@
+/* --------------------- */
+/* Spline */
+/* --------------------- */
+.spline {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* full screen height */
+    overflow: hidden;
+}
+.spline spline-viewer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: -1;
+}
+.spline::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, black 95%, white);
+    opacity: 0.3;
+
+    z-index: 0;
+}
+
+/* #mjaau {
+    background-color: #000;
+    width: 350px;
+    height: 20vh;
+    position: absolute;
+    right: -20px;
+    top: 85vh;
+    z-index: 1;
+}*/ 
+#projects {
+    background: linear-gradient(to top, black 95%, grey);
+}
+/* --------------------- */
+/* Carosel help */
+/* --------------------- */
+.carousel-item img {
+  width: 100% !important;
+  height: 460px !important; /* set to the height you want, e.g. same as your first image */
+  object-fit: cover;
+  object-position: center;
+  transition: all .2s ease-in-out;
+
+}
+.carousel-item{
+  transition: all .2s ease-in-out;
+}
+.carousel-item img:hover{
+  transform: scale(1.1);
+}
+#carouselExampleCaptions {
+  width: 560px;
+  overflow: hidden;
+}
+.carousel-item-start {
+  transform: none !important;
+}
+.carousel-fade .carousel-item {
+  transition: opacity 1s ease-in-out; /* smoother fade */
+  transform: none !important;
+}
+.text-white {
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+.text-black{
+  background: rgba(239, 218, 218, 0.9);
+  z-index: 0;
+}
+
+

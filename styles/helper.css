@@ -1,0 +1,26 @@
+/* --------------------- */
+/* Helper attributes */
+/* --------------------- */
+html, body {
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #000;
+    color: #fff;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300 ;
+    font-style: normal;
+}
+
+.my-0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+}
+.py-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
