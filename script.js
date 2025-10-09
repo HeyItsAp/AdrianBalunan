@@ -4,13 +4,28 @@
 var scrollContainer = document.querySelector('.scrollbar-indicator');
 var scrollbar = scrollContainer.querySelector('.scrollbar');
 
+var counter = 0;
 function scrollPercent() {
+
     return ((window.scrollY) / (document.body.scrollHeight - window.innerHeight) * 100 );
 }
 
+const footerLeftElement = document.getElementById('footer-left');
+const footerRightElement = document.getElementById('footer-right');
+
 function updateProgressBar() {
-scrollbar.style.width = scrollPercent() + '%';
-requestAnimationFrame(updateProgressBar);
+    if (((window.scrollY) / (document.body.scrollHeight - window.innerHeight) * 100 ) >= 99 && counter == 0){
+      console.log("invoke")
+      counter++;
+      footerLeftElement.classList.add("slide-2");
+      footerRightElement.classList.add("slide-3");
+
+
+
+
+    }
+  scrollbar.style.width = scrollPercent() + '%';
+  requestAnimationFrame(updateProgressBar);
 }
 
 updateProgressBar();

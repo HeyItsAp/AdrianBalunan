@@ -2,31 +2,248 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Adrian Paul Limpiado Balunan </title>
+    <title>Java Programmering</title>
+
+    <!-- Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://use.typekit.net/ecv0hnp.css"><!-- Font -->
-    <link rel="stylesheet" href="../styles/animation.css">
+    <!-- Style-->
     <link rel="stylesheet" href="../styles/helper.css">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/infopages.css">
+
 
     <!-- Font Awesome -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <!-- Google Fonts -->
-    <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <section class="container-fluid w-100 min-vh-100 justify-content-center">
+        <div class="row position-relative h-100 min-vw-100 min-vh-100 z-1 d-flex flex-row justify-content-center align-items-center">
+            <div class="col-12 col-md-5"><!-- Content -->
+                <h2 class="text-start mb-2" style="font-weight: 900; font-size: 3.5rem !important;"> Programmering i Java, oppgaver</h2>
+                <blockquote class="text-start fs-3 fst-italic"> Beskrivelse: </blockquote>   
+                <p class="fs-4">Skolen tilbyr oppgaver slik at man kan trene seg opp i java-språket. Den dekker bredden java kan tilby, API-er, objekter og bilbioteker </p>
+                <p class="fs-4">Disse oppgavene er fullstendig individuelle, men kanskje det kommer gruppeoppgave?</p>
+                <p class="fs-4">Målet er kode språket flytende, og å lære meg JavaFx</p>
+                <blockquote class="text-start fs-1 fst-italic"> Mine favouritter hittil -> </blockquote>   
+
+
+            </div>
+            <div class="col-12 col-md-5"><!-- Bilder -->
+                <div class="code-stack">
+                    <!-- Code Block 1 -->
+                    <a href="https://git.ntnu.no/apbaluna/IDAT1003-Programmering" target="_blank" class="code-card">
+                        <pre>
+                            <code class="language-python">
+    // ///////////////////////////
+    // Klasse til en avsnitt som kan redigeres 
+    // ///////////////////////////
+
+    public class Avsnitt {
+        private String avsnitt;
+
+        public Avsnitt(String avsnitt){
+            this.avsnitt = avsnitt;
+        }
+
+        // Print out as it is + Uppercase
+        public String getAvsnitt(){
+            return avsnitt;
+        }
+        public String getAvsnittUpperCase(){
+            return avsnitt.toUpperCase(java.util.Locale.ROOT);
+        }
+
+        // Antall ord:
+        public int WordCount(){
+            String reqpara = "[,\\.\\s]+"; // Funky as symbol for space
+            String[] splittedAvsnitt = avsnitt.split(reqpara);
+            return splittedAvsnitt.length;
+        }
+        // Gjennomsnittlig ordlengde:
+        public double AvarageWordLenght(){
+            String reqpara = "[,\\.\\s]"; // Funky as symbol for space
+            String[] splittedAvsnitt = avsnitt.split(reqpara);
+            int letter_count = 0;
+            for (String word : splittedAvsnitt){
+                letter_count += word.length();
+            }
+            return (double) (letter_count/splittedAvsnitt.length);
+
+
+        }
+        // Antall ord:
+        public double avarageWordLengthPeriod(){
+            String reqpara = "[\\.\\?\\:\\!]+";
+            String reqparaSpace = "[,\\.\\s]+";
+
+            String[] splittedAvsnitt = avsnitt.trim().split(reqpara);
+            int wordcount = 0;
+            for (String sentance : splittedAvsnitt){
+                String[] period = sentance.split(reqparaSpace);
+                wordcount += period.length;
+            }
+            return (double)(wordcount/splittedAvsnitt.length);
+        }
+
+        // Replace 
+        public String replace(String wordtoreplace, String wordToReplaceWith){
+            return avsnitt.replaceAll("\\b" + wordtoreplace + "\\b", wordToReplaceWith);
+        }
+    }
+
+                            </code>
+                        </pre>
+                    </a>
+
+                    <!-- Code Block 2 -->
+                    <a href="https://git.ntnu.no/apbaluna/IDAT1003-Programmering" target="_blank" class="code-card">
+
+                        <pre>
+                            <code class="language-python">
+
+    // ///////////////////////////
+    // Klassen til en matrise
+    // ///////////////////////////
+
+    public class matrise {
+        private int[][] matrix;
+        private int rows;
+        private int cols;
+
+        public matrise(int rows, int cols){
+            this.rows = rows;
+            this.cols = cols;
+            this.matrix = new int[rows][cols];
+        }
+
+        // Legger verdier til matrisen.
+        public void elementer (){
+            Scanner scanner = new Scanner(System.in);
+            
+            System.out.println("-----Legg til elementene-----");
+            for (int i = 0; i < this.rows; i++){
+                for (int j = 0; j < this.cols; j++){
+                    System.out.println("Legg til verdi i rad: "+ i + ", kolonne: "+ j);
+                    matrix[i][j] = scanner.nextInt();
+                }
+            }
+            System.out.println("----------------");
+
+        }
+        // Addisjon
+        public int[][] Addere(){
+            Scanner scanner = new Scanner(System.in);
+            int[][] adMatrise = new int[this.rows][this.cols];
+            int[][] newMatrise = new int[this.rows][this.cols];
+
+
+            // Skrive inn ny matrise for å addere
+            System.out.println("Legg til elementene til en ny matrise, må være samme størrelse som den du satte inn (om du husker)");
+            for (int i = 0; i < this.rows; i++){
+                for (int j = 0; j < this.cols; j++){
+                    System.out.println("Legg til verdi i rad: "+ i + ", kolonne: "+ j);
+                    adMatrise[i][j] = scanner.nextInt();
+                }
+            }
+
+            for (int i = 0; i < this.rows; i++){
+                for (int j = 0; j < this.cols; j++){
+                    System.out.println("Legg til verdi i rad: "+ i + ", kolonne: "+ j);
+                    newMatrise[i][j] = adMatrise[i][j] + this.matrix[i][j];
+                }
+            }
+
+            // Print ut formelen:
+            for (int[] row : this.matrix){
+                for (int cell : row){
+                    System.out.print(cell + "\t");
+                }
+                System.out.println();
+            }
+            System.out.println("+");
+            for (int[] row : adMatrise){
+                for (int cell : row){
+                    System.out.print(cell + "\t");
+                }
+                System.out.println();
+            }
+            System.out.println("=");
+
+            return newMatrise;
+        }
+        // Multiplikasjon
+        public int[][] Multi(){
+            Scanner scanner = new Scanner(System.in);
+            int[][] MuMatrise = new int[this.rows][this.cols];
+            // Kunne ha kopiert koden for å ta inn en egendefinert matrise, men slapp å gjøre det for å unngå uforståelig kode.
+            int[][] newMatrise = new int[this.rows][this.cols];
+
+
+            
+            System.out.println("Legg til elementene til en ny matrise, må være samme størrelse som den du satte inn (om du husker)");
+            for (int i = 0; i < this.rows; i++){
+                for (int j = 0; j < this.cols; j++){
+                    System.out.println("Legg til verdi i rad: "+ i + ", kolonne: "+ j);
+                    MuMatrise[i][j] = scanner.nextInt();
+                }
+            }
+
+            for (int i = 0; i < this.rows; i++){
+                for (int j = 0; j < this.cols; j++){
+                    int sum = 0;
+                    for (int k = 0; k < this.cols; k++){
+                        sum += MuMatrise[i][k] * this.matrix[k][j];
+                    }
+                    newMatrise[i][j] = sum;
+                }
+            }
+
+            // Print ut formelen:
+            for (int[] row : this.matrix){
+                for (int cell : row){
+                    System.out.print(cell + "\t");
+                }
+                System.out.println();
+            }
+            System.out.println("*");
+            for (int[] row : MuMatrise){
+                for (int cell : row){
+                    System.out.print(cell + "\t");
+                }
+                System.out.println();
+            }
+            System.out.println("=");
+
+            return newMatrise;
+        }
+        // Transponering
+        public int[][] Trans(){
+            Scanner scanner = new Scanner(System.in);
+            int[][] newMatrise = new int[this.rows][this.cols];
+
+            for (int i = 0; i < this.rows; i++){
+                for (int j = 0; j < this.cols; j++){
+                    newMatrise[j][i] = matrix[i][j];
+                }
+            }
+            // Print ut formelen:
+            return newMatrise;
+        }
+    }
+
+                            </code>
+                        </pre>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     
 </body>
 </html>

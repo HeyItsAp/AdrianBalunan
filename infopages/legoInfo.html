@@ -4,8 +4,498 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lego Mindstorm</title>
+
+    <!-- Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Style-->
+    <link rel="stylesheet" href="../styles/helper.css">
+    <link rel="stylesheet" href="../styles/infopages.css">
+
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <section class="container-fluid w-100 min-vh-100 justify-content-center">
+        <video autoplay muted loop id="video">
+            <source src="../images/14Attempt.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="row position-relative h-100 min-vw-100 min-vh-100 z-1 d-flex flex-row justify-content-center align-items-center">
+            <div class="col-12 col-md-5"><!-- Content -->
+                <h2 class="text-start mb-2" style="font-weight: 900; font-size: 3.5rem !important;"> LEGO MINDSTORM - Gruppeprosjekt</h2>
+                <blockquote class="text-start fs-3 fst-italic"> Prosjekt Beskrivelse: </blockquote>   
+                <p class="fs-4">Oppgavene dreiet seg rundt Lego Mindstorm Education EV3 roboten. Fra simple kjøreinstruksjoner til linjefølgende og linjekryssende robot. </p>
+                <p class="fs-4">Arbeidet mitt innebærte å kode, debugge og utvikle koden i samarbeid med gruppen. Jeg kommuniserte til et vis grad med gruppen og til gruppelederen om mine endringer.</p>
+                <p class="fs-4">I fremtidig prosjekter må jeg så til smidigere og lønnsomme løsninger.</p>
+            </div>
+            <div class="col-12 col-md-5"><!-- Bilder -->
+                <div class="code-stack">
+                    <!-- Code Block 1 -->
+                    <a href="https://git.ntnu.no/IDATT1004-Team14-H2025/LEGO-oppgaver" target="_blank" class="code-card">
+                        <pre>
+                            <code class="language-python">
+    # ######################
+    # Oving 1               
+    # ######################
+
+    # Initialize the EV3 Brick.
+    ev3 = EV3Brick()
+
+    # Hello World
+    ev3.screen.print("Hello World")
+
+
+    # Initialize the motors.
+    left_motor = Motor(Port.B)
+    right_motor = Motor(Port.C)
+
+    # Initialize the drive base.
+    robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=160)
+
+    # Go forward and backwards for one meter.
+    robot.straight(250)
+    robot.turn(90)
+    ev3.speaker.beep()
+
+    robot.straight(500)
+    robot.turn(90)
+    ev3.speaker.beep()
+
+    robot.straight(250)
+    robot.turn(90)
+    ev3.speaker.beep()
+
+    robot.straight(500)
+    ev3.speaker.beep()
+
+    # End
+    ev3.speaker.say('Have nice day!')
+
+                            </code>
+                        </pre>
+                    </a>
+
+                    <!-- Code Block 2 -->
+                    <a href="https://git.ntnu.no/IDATT1004-Team14-H2025/LEGO-oppgaver" target="_blank" class="code-card">
+
+                        <pre>
+                            <code class="language-python">
+    # ######################
+    # Oving 2               
+    # ######################
+    
+    # Initialize the EV3 Brick.
+    ev3 = EV3Brick()
+
+    # Initialize the Ultrasonic Sensor. It is used to detect
+    obstacle_sensor = UltrasonicSensor(Port.S1)
+
+    # Initialize two motors with default settings on Port B and Port C.
+    # These will be the left and right motors of the drive base.
+    left_motor = Motor(Port.C)
+    right_motor = Motor(Port.B)
+
+    # The DriveBase is composed of two motors, with a wheel on each motor.
+    # The wheel_diameter and axle_track values are used to make the motors
+    # move at the correct speed when you give a motor command.
+    # The axle track is the distance between the points where the wheels
+    # touch the ground.
+    robot = DriveBase(left_motor, right_motor, wheel_diameter=50, axle_track=155)
+
+    knapp = TouchSensor(Port.S4)
+
+
+    # Play a sound to tell us when we are ready to start moving
+    ev3.speaker.beep()
+
+
+    times_pressed=0
+
+    while True:
+        if times_pressed>=2:
+            break
+        if knapp.pressed():
+            times_pressed+=1
+            ev3.speaker.say("exercise 2")
+            while True:
+                robot.drive(200, 0)
+                # Wait until an obstacle is detected. This is done by repeatedly
+                # doing nothing (waiting for 10 milliseconds) while the measured
+                # distance is still greater than 300 mm.
+                while obstacle_sensor.distance() > 100:
+                    wait(1)
+                    if knapp.pressed():
+                        break
+                if knapp.pressed():
+                    times_pressed+=1
+                    break
+
+                    # Drive backward for 300 millimeters.
+                robot.straight(-100)
+            
+                # Turn around by 120 degrees
+                robot.turn(120)
+                
+
+    ev3.speaker.say("Exercise done")
+                            </code>
+                        </pre>
+                    </a>
+
+                    <!-- Code Block 3 -->
+                    <a href="https://git.ntnu.no/IDATT1004-Team14-H2025/LEGO-oppgaver" target="_blank" class="code-card">
+                    <pre>
+                        <code class="language-javascript">
+    
+    # ######################
+    # Oving 3               
+    # ######################
+    ev3=EV3Brick()
+
+    # Party 
+    last_time=time.time()
+    pause_numbers=0
+    FUN=[
+        "What up world baby",
+        "Mibombaclat Hilsen adrian",
+        "AAAAAAAAAAAAAAAAAAA",
+        "Hello World hilsen Mats"
+    ]
+    def party():
+        # Stop
+        robot.stop()
+        left_motor.stop(Stop.BRAKE)
+        right_motor.stop(Stop.BRAKE)
+        # Velg en triks
+        triks = randint(0,3)
+        if (triks == 0): 
+            # Snakking
+            ev3.speaker.say(random.choice(FUN))
+            
+        elif (triks == 1):
+            # noscope
+            print("doing a 360")
+            back_motor.run_target(400, 90, wait=True)
+            left_motor.run(-400)  # Run at 400 deg/s
+            right_motor.run(400)
+
+            wait(2650)
+            left_motor.stop()
+            right_motor.stop()
+            back_motor.run_target(400, 0, wait=False)
+
+
+        elif (triks == 2):
+            print("Trying to shake my ass")
+            back_motor.run_target(400, 100, wait=True)
+            back_motor.run_target(400, -100, wait=True)
+            back_motor.run_target(400, 100, wait=True)
+            back_motor.run_target(400, -100, wait=True)
+            back_motor.run_target(400, 100, wait=True)
+            back_motor.run_target(400, -100, wait=True)
+            back_motor.run_target(400, 100, wait=True)
+            back_motor.run_target(400, -100, wait=True)
+
+            back_motor.run_target(400, 0, wait=True)
+
+        elif (triks == 3):
+            # Explodes
+            ev3.speaker.set_volume(30)
+            ev3.speaker.play_file("music/dies.mp3")
+            print("Finished")
+            triks-=3
+        else:
+            print()
+        ev3.speaker.beep(frequency=2000, duration=300)
+        return
+
+    # Initialize the motors.
+    left_motor = Motor(Port.B)
+    right_motor = Motor(Port.C)
+    back_motor = Motor(Port.D, gears=[8, 28])
+    back_motor.reset_angle(0)
+
+    L = 0.14
+    r = 0.02
+    w = 0.19
+    vinkel_sving=0
+
+
+    # Initialize the color sensor.
+    line_sensorL = ColorSensor(Port.S4)
+    line_sensorR = ColorSensor(Port.S1)
+    crash_sensor = UltrasonicSensor(Port.S2)
+
+    # Initialize the drive base.
+    robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+    # Calculate the light threshold. Choose values based on your measurements.
+    BLACK = 9
+    WHITE = 85
+    threshold = -10 # (BLACK + WHITE) / 2
+
+    # Set the drive speed at 100 millimeters per second.
+    DRIVE_SPEED = -100
+
+    # Volume:
+    ev3.speaker.set_volume(100)
+
+    # Set the gain of the proportional line controller. This means that for every
+    # percentage point of light deviating from the threshold, we set the turn
+    # rate of the drivebase to 1.2 degrees per second.
+
+    # For example, if the light value deviates from the threshold by 10, the robot
+    # steers at 10*1.2 = 12 degrees per second.
+    PROPORTIONAL_GAIN = 4
+
+
+    # Start following the line endlessly.
+    print(crash_sensor.distance())
+    while crash_sensor.distance() > 100:
+
+
+        # Calculate the deviation from the threshold.
+        deviationL = line_sensorL.reflection() - threshold
+        deviationR = line_sensorR.reflection() - threshold
+        #print(deviation)
+
+        current_time=time.time()
+        if current_time - last_time >= 30:
+            robot.stop()
+            party()
+            # Calculate new time
+            time.sleep(2)
+            pause_numbers += 1
+            last_time = current_time
+            continue
+        if (deviationL <= 30 and deviationR > 30): # Venstre ser hvit
+            #print("hvit")
+            # Calculate the turn rate.
+            turn_rate = -(PROPORTIONAL_GAIN * deviationL)
+            DRIVE_SPEED = -20
+            robot.drive(DRIVE_SPEED, turn_rate)
+        elif (deviationL > 30 and deviationR <= 30): # Høyre ser hvit
+            #print("hvit")
+            # Calculate the turn rate.
+            turn_rate = (PROPORTIONAL_GAIN * deviationR)
+            DRIVE_SPEED = -20
+            robot.drive(DRIVE_SPEED, turn_rate)
+        elif ((deviationL > 30 and deviationR > 30) or (deviationL <= 30 and deviationR <= 30)): # Begge ser samme
+            #print("svart")
+
+            DRIVE_SPEED = -70
+            robot.drive(DRIVE_SPEED, -3)
+            #print(deviation)
+        vL = (pi/180) * left_motor.speed()*r
+        vR = (pi/180) * right_motor.speed()*r
+
+        try:
+            vinkel_sving = atan((2*L*(vR - vL)) / (w * (vR + vL))) * (180/pi)
+        except:
+            back_motor.run_target(400, 0, wait=False)
+        else:
+            back_motor.run_target(400, -vinkel_sving, wait=False)
+        # You can wait for a short time or do other things in this loop.
+        wait(10)
+    print("Stopped")
+    robot.stop()
+    left_motor.stop(Stop.BRAKE)
+    right_motor.stop(Stop.BRAKE)
+    ev3.speaker.play_file(SoundFile.FANFARE)
+    back_motor.run_target(200, 0, wait=True)
+                            </code>
+                        </pre>
+                    </a>
+
+
+                    <a href="https://git.ntnu.no/IDATT1004-Team14-H2025/LEGO-oppgaver" target="_blank" class="code-card">
+                        <pre>
+                            <code class="language-html">
+
+    # ######################
+    # Oving 4               
+    # ######################
+
+    ev3=EV3Brick()
+
+    # Initialize the motors.
+    left_motor = Motor(Port.B)
+    right_motor = Motor(Port.C)
+    back_motor = Motor(Port.D, gears=[8, 28])
+    back_motor.reset_angle(0)
+
+    L = 0.14
+    r = 0.02
+    w = 0.19
+    vinkel_sving=0
+
+
+    # Initialize the color sensor.
+    line_sensorL = ColorSensor(Port.S4)
+    line_sensorR = ColorSensor(Port.S1)
+
+    knapp = TouchSensor(Port.S2)
+
+    # Initialize the drive base.
+    robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+    threshold = 20
+    # Set the drive speed at 100 millimeters per second.
+    DRIVE_SPEED = -250 # Working speeds (in pair):  -150    -200    -225
+    TURN_SPEED = -20   # Working speeds          :   -5     -10      -15
+    PROPORTIONAL_GAIN = 3
+    compare = 30
+
+    # cross_diagonal calibrations:
+    distance_back = 125
+    straight_duration = 0.7
+
+    def cross_diagonal():
+    # ---------------------------
+    # NB: Krever nærmere sensorer for at den fungerer. (I vanlig banen)
+    # ---------------------------
+
+    # Sucsessful Calibrations
+    # (Drive_speed, turn_speed, Distance_backwards, time to drive ahead)
+    #   (-250, -20, 125, 0.7)
+    #   (-225, -15, 125, 0.7) Workers with wider and narrower sensors
+    #   (-150, -5, 50, 1)
+
+    # Testing:
+
+
+    
+    # Beep to signal 
+    ev3.speaker.beep()
+    # Force stop and reset
+    robot.stop()
+    back_motor.run_target(700, 0, wait=True)
+
+    # Drive backwards
+    robot.straight(distance_back) # Higher speeds demand greater backwards distance?
+
+
+
+    # Time-variable, used in while:
+    start_time = time.time()
+
+    # Adjust robot so it goes straight
+    while ((time.time() - start_time) < 2): # Does this for 2 seconds
+        deviationL = line_sensorL.reflection() - threshold
+        deviationR = line_sensorR.reflection() - threshold
+        if (deviationL <= compare and deviationR > compare): # Venstre ser hvit
+            #print("hvit")
+            # Calculate the turn rate.
+            turn_rate = -(PROPORTIONAL_GAIN * (abs(deviationL)+abs(deviationR))/4)
+            print(turn_rate)
+
+
+            robot.drive(-1, turn_rate)
+            wait(5)
+
+
+        elif (deviationL > compare and deviationR <= compare): # Høyre ser hvit
+            #print("hvit")
+            # Calculate the turn rate.
+            turn_rate = (PROPORTIONAL_GAIN * (abs(deviationR)+abs(deviationL))/3)
+            print(turn_rate)
+
+            robot.drive(-1, turn_rate)
+            wait(5)
+        else:
+            wait(5)
+        wait(5)
+    
+    # Reset backmotor and hold
+    back_motor.run_target(700, 0, wait=True)
+    back_motor.hold()
+
+    # Drive and reset backmotor
+    start_time = time.time()
+    while ((time.time() - start_time) < straight_duration):
+        robot.drive(-400, 0)
+        # Different distanses need more time?:
+
+    #robot.straight(-200) 
+
+    back_motor.run_target(700, 0, wait=True)
+
+
+
+    # Drive logic 2
+    #robot.drive(DRIVE_SPEED, 0)
+    #robot.drive(DRIVE_SPEED, 0)
+    #wait(300)
+
+    #back_motor.run_target(200, 0, wait=True)
+
+    while not knapp.pressed():
+
+
+    # Calculate the deviation from the threshold.
+    deviationL = line_sensorL.reflection() - threshold
+    deviationR = line_sensorR.reflection() - threshold
+    print(deviationL, deviationR)
+    if (deviationL <= compare  and deviationR <= compare ):
+       cross_diagonal()
+    
+    elif (deviationL > compare and deviationR > compare): # Begge ser samme
+        #print("svart")
+
+        robot.drive(DRIVE_SPEED, 0)
+        #print(deviation)
+    elif (deviationL <= compare and deviationR > compare): # Venstre ser hvit
+        #print("hvit")
+        # Calculate the turn rate.
+        turn_rate = -(PROPORTIONAL_GAIN * abs(deviationL)+abs(deviationR))
+
+        robot.drive(TURN_SPEED, turn_rate)
+        robot.drive(TURN_SPEED, turn_rate)
+        robot.drive(TURN_SPEED, turn_rate)
+        robot.drive(TURN_SPEED, turn_rate)
+
+    elif (deviationL > compare and deviationR <= compare): # Høyre ser hvit
+        #print("hvit")
+        # Calculate the turn rate.
+        turn_rate = (PROPORTIONAL_GAIN * abs(deviationR)+abs(deviationL))
+       
+        robot.drive(TURN_SPEED, turn_rate)
+        robot.drive(TURN_SPEED, turn_rate)
+        robot.drive(TURN_SPEED, turn_rate)
+        robot.drive(TURN_SPEED, turn_rate)
+    vL = (pi/180) * left_motor.speed()*r
+    vR = (pi/180) * right_motor.speed()*r
+
+    try:
+        vinkel_sving = atan((2*L*(vR - vL)) / (w * (vR + vL))) * (180/pi)
+    except:
+        back_motor.run_target(700, 0, wait=False)
+    else:
+        back_motor.run_target(700, -vinkel_sving, wait=False)
+
+    # Set the drive base speed and turn rate.
+
+    # You can wait for a short time or do other things in this loop.
+    wait(10)
+
+    robot.stop()
+    left_motor.stop(Stop.BRAKE)
+    right_motor.stop(Stop.BRAKE)
+    back_motor.run_target(200, 0, wait=True)
+                            </code>
+                        </pre>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     
 </body>
 </html>

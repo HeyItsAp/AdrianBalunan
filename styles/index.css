@@ -76,3 +76,89 @@
 }
 
 
+/* --------------------- */
+/* Animatioon */
+
+/* ! Primaritly used for index.html
+/* --------------------- */
+
+/* The quotes */
+#quotes {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: none;
+}
+
+#author {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: none;
+}
+
+/* Slide in from top */
+.slide-in {
+  animation: slideIn 0.6s ease forwards;
+}
+.slide-2 {
+  animation: slideIn 1.5s ease forwards;
+  opacity: 0;
+}
+.slide-3 {
+  animation: slideIn 1.5s ease forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+
+
+/* Slide out to bottom */
+.slide-out {
+  animation: slideOut 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+/* Triangle down */
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 3vh solid transparent;
+  border-right: 3vh solid transparent;
+  border-top: 6vh solid #ffffff;
+  transform: translate(5vw, 3vh);
+  animation: animationtriangle 2s;
+  animation-iteration-count: 4;
+  opacity: 0;
+  animation-delay: 9s;
+}
+@keyframes animationtriangle {
+    0% {
+        opacity: 1;
+        transform: translate(5vw, -4.5vw);
+    }
+    100% {
+        transform: translate(5vw, -2.5vw);
+    }
+    
+}
+
