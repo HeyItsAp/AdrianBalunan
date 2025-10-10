@@ -50,29 +50,29 @@
 /* Stacking effect */
 .code-card:nth-child(1) {
   --angle: 0;
-  --offsetY: -40px;
-  --offsetX: -40px;
+  --offsetY: -80px;
+  --offsetX: -80px;
 
   z-index: 4;
 }
 .code-card:nth-child(2) {
   --angle: 0;
-    --offset: 60px;
-  --offsetX: 60px;
+    --offset: -40px;
+  --offsetX: -40px;
 
   z-index: 3;
 }
 .code-card:nth-child(3) {
   --angle: 0;
-  --offset: 100px;
-  --offsetX: 100px;
+  --offset: 40px;
+  --offsetX: 40px;
 
   z-index: 2;
 }
 .code-card:nth-child(4) {
   --angle: 0;
-  --offset: 120px;
-  --offsetX: 120px;
+  --offset: 80px;
+  --offsetX: 80px;
 
   z-index: 1;
 }
@@ -92,5 +92,14 @@
     position: relative;
     transform: none !important;
     margin-bottom: 1rem;
+  }
+}
+@media (min-width: 504px) {
+  .code-stack {
+    max-width: 300px;
+    height: 300px;
+  }
+  .fs-4 {
+    font-size: 1rem !important;
   }
 }

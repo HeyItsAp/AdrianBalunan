@@ -14,15 +14,11 @@ const footerLeftElement = document.getElementById('footer-left');
 const footerRightElement = document.getElementById('footer-right');
 
 function updateProgressBar() {
-    if (((window.scrollY) / (document.body.scrollHeight - window.innerHeight) * 100 ) >= 99 && counter == 0){
+    if (((window.scrollY) / (document.body.scrollHeight - window.innerHeight) * 100 ) >= 70 && counter == 0){
       console.log("invoke")
       counter++;
       footerLeftElement.classList.add("slide-2");
       footerRightElement.classList.add("slide-3");
-
-
-
-
     }
   scrollbar.style.width = scrollPercent() + '%';
   requestAnimationFrame(updateProgressBar);
