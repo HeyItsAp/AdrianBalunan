@@ -102,11 +102,13 @@
 .slide-2 {
   animation: slideIn 1.5s ease forwards;
   opacity: 0;
+  animation-delay: 1.5s;
+
 }
 .slide-3 {
   animation: slideIn 1.5s ease forwards;
   opacity: 0;
-  animation-delay: 0.5s;
+  animation-delay: 2s;
 }
 
 
