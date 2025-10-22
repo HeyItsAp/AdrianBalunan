@@ -39,42 +39,12 @@
     background: linear-gradient(to top, black 95%, grey);
 }
 /* --------------------- */
-/* Carosel help */
+/* Project */
 /* --------------------- */
-.carousel-item img {
-  width: 100% !important;
-  height: 460px !important; /* set to the height you want, e.g. same as your first image */
-  object-fit: cover;
-  object-position: center;
-  transition: all .2s ease-in-out;
-
+.project-img {
+  width: auto;
+  height: 200px;
 }
-.carousel-item{
-  transition: all .2s ease-in-out;
-}
-.carousel-item img:hover{
-  transform: scale(1.1);
-}
-#carouselExampleCaptions {
-  width: 560px;
-  overflow: hidden;
-}
-.carousel-item-start {
-  transform: none !important;
-}
-.carousel-fade .carousel-item {
-  transition: opacity 1s ease-in-out; /* smoother fade */
-  transform: none !important;
-}
-.text-white {
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
-}
-.text-black{
-  background: rgba(239, 218, 218, 0.9);
-  z-index: 0;
-}
-
 
 /* --------------------- */
 /* Animatioon */
@@ -162,5 +132,15 @@
         transform: translate(5vw, -2.5vw);
     }
     
+}
+@media (max-width: 1480px) {
+  .code-stack {
+    max-width: 400px;
+    height: 400px;
+    margin-bottom: 1rem;
+  }
+  .fs-4 {
+    font-size: 1.5rem !important;
+  }
 }
 
