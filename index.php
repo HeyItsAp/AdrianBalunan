@@ -24,6 +24,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <?php
+            require_once 'php_requires/dbh-inc.php';
+        ?>
     </head>
     <body class="d-flex flex-column h-100" onload="startTime()">
         <div class="scrollbar-indicator w-100 position-fixed" style="height: 1%; top: 0px;">
@@ -110,6 +113,44 @@
             <div class="px-3 vh-100 d-flex flex-column justify-content-center align-items-center">
                 <h1> Get a load of this guy </h1>
                 <p> Han der nedde.</p>
+            </div>
+        </section>
+
+        <!-- Comments Section -->
+        <?php
+            // Data retrieval from database
+            try {
+                require_once "php_requires/dbh-inc.php"; 
+                $query = "SELECT * FROM comments ORDER BY comment_createdAt DESC";
+                $stmt = $pdo -> prepare($query);
+                $stmt -> execute();
+                $result = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+
+            } catch (PDOException $e) {
+                die("Failed : " . $e->getMessage()); 
+            }
+        ?>
+        <section class="container-fluid w-100 min-vh-100 d-flex flex-column justify-content-center align-items-center text-center" style="padding: 4rem 2rem;">
+            <div class="px-3 vh-100 d-flex flex-column justify-content-center align-items-center">
+                <h1 class="text-center py-3 w-100 border-bottom"> Comment Section </h1>
+                <a href="comment.php" class="my-2"><p> Want to comment? Go click on me</p></a>
+                <div class="w-100 h-100 d-flex flex-row flex-wrap justify-content-center align-items-start py-3 overflow-auto" style="max-height: 60vh;">
+                    <?php 
+                    if (empty($result)){ ?>
+                        <p class="text-center"> No comments yet. Be the first to comment!</p>
+                    <?php }
+                    foreach ($result as $row) { ?>
+                        <div class="border rounded p-3 m-2 text-start ">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-3"><?php echo htmlspecialchars($row['comment_author']); ?></h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo htmlspecialchars($row['comment_createdAt']); ?></h6>
+                                    <p class="card-text"><?php echo htmlspecialchars($row['comment_text']); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
         </section>
 
